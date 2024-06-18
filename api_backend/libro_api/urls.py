@@ -3,5 +3,5 @@ from libro_api import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('about/', views.about, name='about'),
+    path('libros_rest/', views.libros_rest, name='libros_rest')
 ]
