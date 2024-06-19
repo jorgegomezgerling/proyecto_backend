@@ -9,7 +9,7 @@
 <body class="bg-gray-100">
   <nav class="bg-blue-500 p-4">
     <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-white font-bold text-xl">Libros list</h1>
+      <h1 class="text-white font-bold text-xl">Libros</h1>
       <ul class="flex space-x-4">
         <li><a href="#" class="text-white hover:text-gray-200">Inicio</a></li>
         <li><a href="#" class="text-white hover:text-gray-200">Acerca de</a></li>
@@ -19,7 +19,7 @@
   </nav>
   <div class="container mx-auto px-4 py-8">
     <h1 class="text-3xl font-bold mb-4">Lista de Libros</h1>
-    <table class="w-full border-collapse border border-gray-300">
+    <table class="w-full border-collapse border border-gray-300 mb-8">
       <thead>
         <tr class="bg-gray-200">
           <th class="border border-gray-300 px-4 py-2">Título</th>
@@ -41,11 +41,48 @@
           </td>
           <td class="border border-gray-300 px-4 py-2">{{ libro.cantidad_paginas }}</td>
           <td class="border border-gray-300 px-4 py-2">{% if libro.descatalogado %}Yes{% else %}No{% endif %}</td>
-          <td class="border border-gray-300 px-4 py-2">{{ libro.editorial }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ libro.editorial.nombre }}</td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
+
+    <h1 class="text-3xl font-bold mb-4">Lista de Editoriales</h1>
+    <table class="w-full border-collapse border border-gray-300 mb-8">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border border-gray-300 px-4 py-2">Nombre</th>
+          <th class="border border-gray-300 px-4 py-2">Ciudad</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for editorial in editoriales %}
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2">{{ editorial.nombre }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ editorial.ciudad }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h1 class="text-3xl font-bold mb-4">Lista de Autores</h1>
+    <table class="w-full border-collapse border border-gray-300 mb-8">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border border-gray-300 px-4 py-2">Nombre</th>
+          <th class="border border-gray-300 px-4 py-2">Apellido</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for autor in autores %}
+        <tr class="bg-white">
+          <td class="border border-gray-300 px-4 py-2">{{ autor.nombre }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ autor.apellido }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
   </div>
 </body>
 </html>
