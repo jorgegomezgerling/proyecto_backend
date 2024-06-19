@@ -1,6 +1,6 @@
 from django import forms
 
-from libro_api.models import Libro
+from libro_api.models import Libro, Autor, Editorial
 
 class LibroForm(forms.ModelForm):
     class Meta:
@@ -10,4 +10,21 @@ class LibroForm(forms.ModelForm):
             'cantidad_paginas',
             'descatalogado',
             'editorial',
+        ]
+
+class AutorForm(forms.ModelForm):
+    class Meta:
+        model = Autor
+        fields = [
+            'nombre',
+            'apellido',
+        ]
+
+
+class EditorialForm(forms.ModelForm):
+    class Meta:
+        model = Editorial
+        fields = [
+            'nombre',
+            'ciudad',
         ]

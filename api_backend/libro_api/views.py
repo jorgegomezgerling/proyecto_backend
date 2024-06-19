@@ -1,8 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from libro_api.models import Libro, Autor, Editorial
 from libro_api.serializers import LibroSerializer, EditorialSerializer, AutorSerializer
-from django.http import JsonResponse
-from libro_api.forms import LibroForm
+from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
+from libro_api.forms import LibroForm, AutorForm, EditorialForm
+
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
+from django.middleware.csrf import get_token
+
+
 
 def index(request):
     libros = Libro.objects.all().order_by('titulo')
@@ -57,3 +63,19 @@ def editoriales_rest(request):
 #PARA FORMULARIOS
 
 
+class NewLibroView(CreateView):
+    form_class = LibroForm
+    template_name = 'libros_form.html'
+    success_url = '/index_libros'
+
+
+class NewAutorView(CreateView):
+    form_class = AutorForm
+    template_name = 'libros_form.html'
+    success_url = '/index_libros'
+
+
+class NewEditorialView(CreateView):
+    form_class = EditorialForm
+    template_name = 'libros_form.html'
+    success_url = '/index_libros'
