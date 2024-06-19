@@ -18,8 +18,8 @@ class AutorForm(forms.ModelForm):
         fields = [
             'nombre',
             'apellido',
+            'libros',
         ]
-
 
 class EditorialForm(forms.ModelForm):
     class Meta:

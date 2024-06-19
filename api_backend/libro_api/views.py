@@ -72,7 +72,7 @@ class NewLibroView(CreateView):
 class NewAutorView(CreateView):
     form_class = AutorForm
     template_name = 'libros_form.html'
-    success_url = '/index_libros'
+    success_url = reverse_lazy('index_libros')
 
 
 class NewEditorialView(CreateView):
